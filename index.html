@@ -36,6 +36,7 @@
     <style>
         /* Slide Behavior */
         html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        
         .slides-container {
             height: 100vh;
             width: 100vw;
@@ -43,15 +44,28 @@
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
+
         section {
-            height: 100vh;
             width: 100vw;
             scroll-snap-align: start;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            /* Mobile Default: Auto height to fit content, prevent clipping */
+            min-height: 100vh;
+            height: auto;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Desktop: Fixed height for slide deck feel */
+        @media (min-width: 768px) {
+            section {
+                height: 100vh;
+                overflow: hidden;
+                padding: 0;
+            }
         }
         
         /* Utility */
@@ -60,9 +74,12 @@
         
         /* Navigation Dots */
         .nav-dots {
-            position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 10px;
+            position: fixed; top: 50%; right: 10px; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 10px;
         }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; }
+        @media (min-width: 768px) {
+            .nav-dots { right: 20px; }
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; }
         .dot.active { background: #BE0027; transform: scale(1.2); }
 
         /* Modal Animation */
@@ -99,16 +116,16 @@
             <div class="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-30">
             </div>
-            <div class="container mx-auto px-12 relative z-10 text-center">
+            <div class="container mx-auto px-4 md:px-12 relative z-10 text-center">
                 <div class="animate__animated animate__fadeInDown">
-                    <div class="inline-block px-4 py-1 border border-nkba-gold text-nkba-gold rounded-full text-sm font-bold tracking-widest mb-6">KICK-OFF</div>
-                    <h1 class="font-heading font-black text-6xl md:text-8xl mb-4 leading-tight">
+                    <div class="inline-block px-4 py-1 border border-nkba-gold text-nkba-gold rounded-full text-sm font-bold tracking-widest mb-4 md:mb-6">KICK-OFF</div>
+                    <h1 class="font-heading font-black text-5xl md:text-8xl mb-2 md:mb-4 leading-tight">
                         NKBA
                     </h1>
-                    <h2 class="font-heading font-black text-3xl md:text-5xl font-light mb-8">LIÊN MINH KINH DOANH XÂY DỰNG <br><span class="font-heading font-black text-nkba-red">VIỆT - NHẬT</span></h2>
+                    <h2 class="font-heading font-black text-2xl md:text-5xl font-light mb-6 md:mb-8">LIÊN MINH KINH DOANH XÂY DỰNG <br><span class="font-heading font-black text-nkba-red">VIỆT - NHẬT</span></h2>
                 </div>
-                <div class="w-24 h-1 bg-white mx-auto mb-8 animate__animated animate__zoomIn"></div>
-                <p class="text-xl text-slate-300 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="w-16 md:w-24 h-1 bg-white mx-auto mb-6 md:mb-8 animate__animated animate__zoomIn"></div>
+                <p class="text-lg md:text-xl text-slate-300 animate__animated animate__fadeInUp animate__delay-1s">
                     Người trình bày: <strong class="text-white">Phạm Xuân Hưng</strong><br>
                     <span class="text-sm">Cố vấn chiến lược & Đồng Sáng Lập</span>
                 </p>
@@ -117,29 +134,29 @@
 
         <!-- SLIDE 2: THE PAIN (NỖI ĐAU) -->
         <section class="bg-white text-nkba-navy">
-            <div class="container mx-auto px-12">
-                <h2 class="font-heading font-bold text-4xl mb-12 text-center animate__animated animate__fadeInUp">Tại sao chúng ta ngồi đây?</h2>
+            <div class="container mx-auto px-4 md:px-12">
+                <h2 class="font-heading font-bold text-2xl md:text-4xl mb-8 md:mb-12 text-center animate__animated animate__fadeInUp">Tại sao chúng ta ngồi đây?</h2>
                 
-                <div class="grid grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
                     <!-- Pain 1 -->
-                    <div class="p-8 bg-slate-50 rounded-2xl border-l-8 border-nkba-navy shadow-lg animate__animated animate__fadeInLeft animate__delay-1s">
-                        <div class="text-6xl mb-4 text-slate-300"><i class="ph ph-puzzle-piece"></i></div>
-                        <h3 class="text-2xl font-bold mb-3 text-red-600">Sự Rời Rạc</h3>
-                        <p class="text-lg text-slate-600">Chúng ta có nghề, có tâm, nhưng "mạnh ai nấy làm". Thiếu một tiếng nói chung để tạo sức mạnh tổng hợp.</p>
+                    <div class="p-6 md:p-8 bg-slate-50 rounded-2xl border-l-8 border-nkba-navy shadow-lg animate__animated animate__fadeInLeft animate__delay-1s">
+                        <div class="text-4xl md:text-6xl mb-2 md:mb-4 text-slate-300"><i class="ph ph-puzzle-piece"></i></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-red-600">Sự Rời Rạc</h3>
+                        <p class="text-sm md:text-lg text-slate-600">Chúng ta có nghề, có tâm, nhưng "mạnh ai nấy làm". Thiếu một tiếng nói chung để tạo sức mạnh tổng hợp.</p>
                     </div>
 
                     <!-- Pain 2 -->
-                    <div class="p-8 bg-slate-50 rounded-2xl border-l-8 border-nkba-red shadow-lg animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="text-6xl mb-4 text-slate-300"><i class="ph ph-translate"></i></div>
-                        <h3 class="text-2xl font-bold mb-3 text-red-600">Rào Cản</h3>
-                        <p class="text-lg text-slate-600">Ngôn ngữ, Văn hóa, Tiêu chuẩn kỹ thuật khắt khe khiến DN Việt khó tiếp cận các Tổng thầu Nhật Bản.</p>
+                    <div class="p-6 md:p-8 bg-slate-50 rounded-2xl border-l-8 border-nkba-red shadow-lg animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="text-4xl md:text-6xl mb-2 md:mb-4 text-slate-300"><i class="ph ph-translate"></i></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-red-600">Rào Cản</h3>
+                        <p class="text-sm md:text-lg text-slate-600">Ngôn ngữ, Văn hóa, Tiêu chuẩn kỹ thuật khắt khe khiến DN Việt khó tiếp cận các Tổng thầu Nhật Bản.</p>
                     </div>
 
                     <!-- Pain 3 -->
-                    <div class="p-8 bg-slate-50 rounded-2xl border-l-8 border-nkba-gold shadow-lg animate__animated animate__fadeInRight animate__delay-1s">
-                        <div class="text-6xl mb-4 text-slate-300"><i class="ph ph-hand-palm"></i></div>
-                        <h3 class="text-2xl font-bold mb-3 text-red-600">Thiếu Niềm Tin</h3>
-                        <p class="text-lg text-slate-600">Đối tác Nhật cần sự an toàn. Họ thiếu một địa chỉ "bảo chứng" uy tín để tìm kiếm nhà thầu phụ.</p>
+                    <div class="p-6 md:p-8 bg-slate-50 rounded-2xl border-l-8 border-nkba-gold shadow-lg animate__animated animate__fadeInRight animate__delay-1s">
+                        <div class="text-4xl md:text-6xl mb-2 md:mb-4 text-slate-300"><i class="ph ph-hand-palm"></i></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-red-600">Thiếu Niềm Tin</h3>
+                        <p class="text-sm md:text-lg text-slate-600">Đối tác Nhật cần sự an toàn. Họ thiếu một địa chỉ "bảo chứng" uy tín để tìm kiếm nhà thầu phụ.</p>
                     </div>
                 </div>
             </div>
@@ -148,33 +165,33 @@
         <!-- SLIDE 3: THE SOLUTION (SỰ CẦN THIẾT) -->
         <section class="bg-nkba-navy text-white relative overflow-hidden">
             <!-- Decorative Circle -->
-            <div class="absolute -right-20 top-20 w-96 h-96 bg-nkba-red rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute -right-20 top-20 w-96 h-96 bg-nkba-red rounded-full opacity-20 blur-3xl hidden md:block"></div>
             
-            <div class="container mx-auto px-12 grid grid-cols-2 gap-16 items-center relative z-10">
-                <div class="animate__animated animate__fadeInLeft">
-                    <h2 class="font-heading font-bold text-5xl mb-6 leading-tight">Cần Một<br><span class="text-nkba-gold">Hệ Sinh Thái</span></h2>
-                    <p class="text-xl text-slate-300 mb-6 text-justify">
+            <div class="container mx-auto px-4 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
+                <div class="animate__animated animate__fadeInLeft text-center md:text-left">
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl mb-4 md:mb-6 leading-tight">Cần Một<br><span class="text-nkba-gold">Hệ Sinh Thái</span></h2>
+                    <p class="text-lg md:text-xl text-slate-300 mb-6 text-justify md:text-left">
                         Không chỉ là một hội nhóm cafe. Chúng ta cần một tổ chức:
                     </p>
-                    <ul class="space-y-4 text-lg">
-                        <li class="flex items-center gap-3"><i class="ph ph-check-circle text-green-400 text-2xl"></i> <span>Biến quan hệ thành <strong>Hợp đồng</strong>.</span></li>
-                        <li class="flex items-center gap-3"><i class="ph ph-check-circle text-green-400 text-2xl"></i> <span>Biến kinh nghiệm cá nhân thành <strong>Quy trình chuẩn</strong>.</span></li>
-                        <li class="flex items-center gap-3"><i class="ph ph-check-circle text-green-400 text-2xl"></i> <span>Biến sự đơn lẻ thành <strong>Sức mạnh tập thể</strong>.</span></li>
+                    <ul class="space-y-4 text-base md:text-lg text-left">
+                        <li class="flex items-center gap-3"><i class="ph ph-check-circle text-green-400 text-xl md:text-2xl"></i> <span>Biến quan hệ thành <strong>Hợp đồng</strong>.</span></li>
+                        <li class="flex items-center gap-3"><i class="ph ph-check-circle text-green-400 text-xl md:text-2xl"></i> <span>Biến kinh nghiệm cá nhân thành <strong>Quy trình chuẩn</strong>.</span></li>
+                        <li class="flex items-center gap-3"><i class="ph ph-check-circle text-green-400 text-xl md:text-2xl"></i> <span>Biến sự đơn lẻ thành <strong>Sức mạnh tập thể</strong>.</span></li>
                     </ul>
                 </div>
                 <div class="flex justify-center animate__animated animate__zoomIn">
                     <!-- Symbolic graphic -->
-                    <div class="relative w-80 h-80">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 scale-90 md:scale-100">
                         <div class="absolute inset-0 border-4 border-dashed border-white/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
                         <div class="absolute inset-4 bg-white text-nkba-navy rounded-full flex flex-col items-center justify-center shadow-2xl">
-                            <span class="font-heading font-black text-4xl">NKBA</span>
-                            <span class="text-sm uppercase tracking-widest mt-2">The Hub</span>
+                            <span class="font-heading font-black text-3xl md:text-4xl">NKBA</span>
+                            <span class="text-xs md:text-sm uppercase tracking-widest mt-2">The Hub</span>
                         </div>
                         <!-- Satellites -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-nkba-red px-4 py-2 rounded text-sm font-bold shadow-lg">KIẾN TRÚC</div>
-                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-nkba-red px-4 py-2 rounded text-sm font-bold shadow-lg">XÂY DỰNG</div>
-                        <div class="absolute top-1/2 -right-12 -translate-y-1/2 bg-nkba-red px-4 py-2 rounded text-sm font-bold shadow-lg">VẬT LIỆU</div>
-                        <div class="absolute top-1/2 -left-12 -translate-y-1/2 bg-nkba-red px-4 py-2 rounded text-sm font-bold shadow-lg">THƯƠNG MẠI</div>
+                        <div class="absolute -top-5 md:-top-6 left-1/2 -translate-x-1/2 bg-nkba-red px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-sm font-bold shadow-lg">KIẾN TRÚC</div>
+                        <div class="absolute -bottom-5 md:-bottom-6 left-1/2 -translate-x-1/2 bg-nkba-red px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-sm font-bold shadow-lg">XÂY DỰNG</div>
+                        <div class="absolute top-1/2 -right-10 md:-right-12 -translate-y-1/2 bg-nkba-red px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-sm font-bold shadow-lg">VẬT LIỆU</div>
+                        <div class="absolute top-1/2 -left-10 md:-left-12 -translate-y-1/2 bg-nkba-red px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-sm font-bold shadow-lg">THƯƠNG MẠI</div>
                     </div>
                 </div>
             </div>
@@ -182,27 +199,27 @@
 
         <!-- SLIDE 4: MISSION & VISION -->
         <section class="bg-white">
-            <div class="container mx-auto px-12 text-center">
-                <div class="mb-16 animate__animated animate__fadeInDown">
-                    <span class="text-nkba-grey font-bold tracking-widest uppercase">Kim Chỉ Nam</span>
-                    <h2 class="font-heading font-black text-5xl text-nkba-navy mt-2">SỨ MỆNH & TẦM NHÌN</h2>
+            <div class="container mx-auto px-4 md:px-12 text-center">
+                <div class="mb-10 md:mb-16 animate__animated animate__fadeInDown">
+                    <span class="text-nkba-grey font-bold tracking-widest uppercase text-sm md:text-base">Kim Chỉ Nam</span>
+                    <h2 class="font-heading font-black text-3xl md:text-5xl text-nkba-navy mt-2">SỨ MỆNH & TẦM NHÌN</h2>
                 </div>
 
-                <div class="flex flex-col gap-6 items-center">
+                <div class="flex flex-col gap-4 md:gap-6 items-center w-full">
                     <!-- Mission (Top) -->
-                    <div class="w-full max-w-3xl bg-nkba-navy text-white p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 animate__animated animate__fadeInUp">
-                        <div class="flex items-center justify-center mb-4 text-nkba-gold text-4xl"><i class="ph ph-target"></i></div>
-                        <h3 class="text-2xl font-bold mb-2 text-nkba-gold">SỨ MỆNH</h3>
-                        <p class="text-lg font-light italic">"Connecting Trust - Building Value"</p>
-                        <p class="mt-4 text-slate-300">Kết nối niềm tin giữa các đối tác - Kiến tạo giá trị thực tế cho từng dự án.</p>
+                    <div class="w-full max-w-3xl bg-nkba-navy text-white p-6 md:p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 animate__animated animate__fadeInUp">
+                        <div class="flex items-center justify-center mb-2 md:mb-4 text-nkba-gold text-3xl md:text-4xl"><i class="ph ph-target"></i></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-nkba-gold">SỨ MỆNH</h3>
+                        <p class="text-base md:text-lg font-light italic">"Connecting Trust - Building Value"</p>
+                        <p class="mt-2 md:mt-4 text-sm md:text-base text-slate-300">Kết nối niềm tin giữa các đối tác - Kiến tạo giá trị thực tế cho từng dự án.</p>
                     </div>
 
                     <!-- Vision (Bottom - Wider) -->
-                    <div class="w-full max-w-5xl bg-nkba-red text-white p-10 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="flex items-center justify-center mb-4 text-white text-4xl"><i class="ph ph-eye"></i></div>
-                        <h3 class="text-2xl font-bold mb-2">TẦM NHÌN</h3>
-                        <p class="text-xl font-medium">Trở thành Hệ sinh thái kinh doanh số 1 trong lĩnh vực xây dựng Việt - Nhật.</p>
-                        <p class="mt-2 text-red-100">Là địa chỉ tham vấn tin cậy đầu tiên cho mọi doanh nghiệp Nhật Bản khi vào Việt Nam.</p>
+                    <div class="w-full max-w-5xl bg-nkba-red text-white p-6 md:p-10 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="flex items-center justify-center mb-2 md:mb-4 text-white text-3xl md:text-4xl"><i class="ph ph-eye"></i></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">TẦM NHÌN</h3>
+                        <p class="text-base md:text-xl font-medium">Trở thành Hệ sinh thái kinh doanh số 1 trong lĩnh vực xây dựng Việt - Nhật.</p>
+                        <p class="mt-2 text-xs md:text-base text-red-100">Là địa chỉ tham vấn tin cậy đầu tiên cho mọi doanh nghiệp Nhật Bản khi vào Việt Nam.</p>
                     </div>
                 </div>
             </div>
@@ -210,32 +227,32 @@
 
         <!-- SLIDE 5: CORE VALUES -->
         <section class="bg-slate-100 text-nkba-navy">
-            <div class="container mx-auto px-12">
-                <h2 class="font-heading font-black text-4xl mb-16 text-center">GIÁ TRỊ CỐT LÕI</h2>
-                <div class="grid grid-cols-4 gap-6">
+            <div class="container mx-auto px-4 md:px-12">
+                <h2 class="font-heading font-black text-3xl md:text-4xl mb-10 md:mb-16 text-center">GIÁ TRỊ CỐT LÕI</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     <!-- Trust -->
                     <div class="text-center group cursor-default animate__animated animate__fadeInUp">
-                        <div class="w-20 h-20 mx-auto bg-nkba-navy text-white rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-lg">T</div>
-                        <h3 class="font-bold text-xl mb-2">TRUST</h3>
-                        <p class="text-sm text-slate-500">Tín - Shinrai</p>
+                        <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-nkba-navy text-white rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 transition duration-300 shadow-lg">T</div>
+                        <h3 class="font-bold text-lg md:text-xl mb-1 md:mb-2">TRUST</h3>
+                        <p class="text-xs md:text-sm text-slate-500">Tín - Shinrai</p>
                     </div>
                     <!-- Expertise -->
                     <div class="text-center group cursor-default animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="w-20 h-20 mx-auto bg-nkba-red text-white rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-lg">E</div>
-                        <h3 class="font-bold text-xl mb-2">EXPERTISE</h3>
-                        <p class="text-sm text-slate-500">Chuyên - Kensetsu</p>
+                        <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-nkba-red text-white rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 transition duration-300 shadow-lg">E</div>
+                        <h3 class="font-bold text-lg md:text-xl mb-1 md:mb-2">EXPERTISE</h3>
+                        <p class="text-xs md:text-sm text-slate-500">Chuyên - Kensetsu</p>
                     </div>
                     <!-- Practicality -->
                     <div class="text-center group cursor-default animate__animated animate__fadeInUp animate__delay-2s">
-                        <div class="w-20 h-20 mx-auto bg-slate-600 text-white rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-lg">P</div>
-                        <h3 class="font-bold text-xl mb-2">PRACTICALITY</h3>
-                        <p class="text-sm text-slate-500">Thực - Business</p>
+                        <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-slate-600 text-white rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 transition duration-300 shadow-lg">P</div>
+                        <h3 class="font-bold text-lg md:text-xl mb-1 md:mb-2">PRACTICALITY</h3>
+                        <p class="text-xs md:text-sm text-slate-500">Thực - Business</p>
                     </div>
                     <!-- Sustainability -->
                     <div class="text-center group cursor-default animate__animated animate__fadeInUp animate__delay-3s">
-                        <div class="w-20 h-20 mx-auto bg-nkba-gold text-white rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-lg">S</div>
-                        <h3 class="font-bold text-xl mb-2">SUSTAINABILITY</h3>
-                        <p class="text-sm text-slate-500">Bền - Value</p>
+                        <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-nkba-gold text-white rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 transition duration-300 shadow-lg">S</div>
+                        <h3 class="font-bold text-lg md:text-xl mb-1 md:mb-2">SUSTAINABILITY</h3>
+                        <p class="text-xs md:text-sm text-slate-500">Bền - Value</p>
                     </div>
                 </div>
             </div>
@@ -243,38 +260,38 @@
 
         <!-- SLIDE 6: KEY ACTIVITIES -->
         <section class="bg-nkba-navy text-white">
-            <div class="container mx-auto px-12">
-                <div class="text-center mb-16">
-                    <h2 class="font-heading font-black text-4xl mb-4">CHÚNG TA LÀM GÌ?</h2>
-                    <p class="text-xl text-slate-300">3 Trụ cột hành động cụ thể</p>
+            <div class="container mx-auto px-4 md:px-12">
+                <div class="text-center mb-10 md:mb-16">
+                    <h2 class="font-heading font-black text-3xl md:text-4xl mb-4">CHÚNG TA LÀM GÌ?</h2>
+                    <p class="text-lg md:text-xl text-slate-300">3 Trụ cột hành động cụ thể</p>
                 </div>
                 
-                <div class="grid grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     <!-- Biz-Link -->
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition duration-300 animate__animated animate__fadeInLeft">
-                        <h3 class="text-2xl font-bold text-nkba-gold mb-4">01. Biz-Link</h3>
-                        <p class="mb-4 text-sm font-bold uppercase tracking-wider">Xúc tiến thương mại</p>
-                        <ul class="space-y-3 text-slate-200">
+                    <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition duration-300 animate__animated animate__fadeInLeft">
+                        <h3 class="text-xl md:text-2xl font-bold text-nkba-gold mb-3 md:mb-4">01. Biz-Link</h3>
+                        <p class="mb-3 md:mb-4 text-xs md:text-sm font-bold uppercase tracking-wider">Xúc tiến thương mại</p>
+                        <ul class="space-y-2 md:space-y-3 text-slate-200 text-sm md:text-base">
                             <li><i class="ph ph-check text-green-400"></i> Sàn thầu kín</li>
                             <li><i class="ph ph-check text-green-400"></i> Kết nối B2B 1-1</li>
                         </ul>
                     </div>
 
                     <!-- Talent-Hub -->
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition duration-300 animate__animated animate__fadeInUp animate__delay-1s">
-                        <h3 class="text-2xl font-bold text-nkba-red mb-4">02. Talent-Hub</h3>
-                        <p class="mb-4 text-sm font-bold uppercase tracking-wider">Nhân sự & Đào tạo</p>
-                        <ul class="space-y-3 text-slate-200">
+                    <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition duration-300 animate__animated animate__fadeInUp animate__delay-1s">
+                        <h3 class="text-xl md:text-2xl font-bold text-nkba-red mb-3 md:mb-4">02. Talent-Hub</h3>
+                        <p class="mb-3 md:mb-4 text-xs md:text-sm font-bold uppercase tracking-wider">Nhân sự & Đào tạo</p>
+                        <ul class="space-y-2 md:space-y-3 text-slate-200 text-sm md:text-base">
                             <li><i class="ph ph-check text-green-400"></i> Đào tạo chuẩn Nhật</li>
                             <li><i class="ph ph-check text-green-400"></i> Cung ứng nhân sự cao cấp</li>
                         </ul>
                     </div>
 
                     <!-- Insights -->
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition duration-300 animate__animated animate__fadeInRight animate__delay-2s">
-                        <h3 class="text-2xl font-bold text-blue-300 mb-4">03. Insights</h3>
-                        <p class="mb-4 text-sm font-bold uppercase tracking-wider">Thông tin & Pháp lý</p>
-                        <ul class="space-y-3 text-slate-200">
+                    <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition duration-300 animate__animated animate__fadeInRight animate__delay-2s">
+                        <h3 class="text-xl md:text-2xl font-bold text-blue-300 mb-3 md:mb-4">03. Insights</h3>
+                        <p class="mb-3 md:mb-4 text-xs md:text-sm font-bold uppercase tracking-wider">Thông tin & Pháp lý</p>
+                        <ul class="space-y-2 md:space-y-3 text-slate-200 text-sm md:text-base">
                             <li><i class="ph ph-check text-green-400"></i> Báo cáo thị trường</li>
                             <li><i class="ph ph-check text-green-400"></i> Tư vấn pháp lý & Thuế</li>
                         </ul>
@@ -288,20 +305,20 @@
             <div class="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-10">
             </div>
-            <div class="container mx-auto px-12 relative z-10">
-                <h2 class="font-heading font-black text-5xl md:text-6xl text-nkba-navy mb-8 animate__animated animate__pulse animate__infinite">
+            <div class="container mx-auto px-4 md:px-12 relative z-10">
+                <h2 class="font-heading font-black text-3xl md:text-6xl text-nkba-navy mb-6 md:mb-8 animate__animated animate__pulse animate__infinite">
                     HÃY THAM GIA CÙNG CHÚNG TÔI
                 </h2>
-                <p class="text-2xl text-slate-600 mb-12 max-w-3xl mx-auto">
+                <p class="text-lg md:text-2xl text-slate-600 mb-8 md:mb-12 max-w-3xl mx-auto">
                     "Muốn đi nhanh hãy đi một mình.<br>Muốn đi xa, và đi thật chắc, hãy đi cùng <strong>NKBA</strong>."
                 </p>
                 
                 <div class="flex justify-center items-center">
                     <div class="text-center">
-                        <button onclick="openRegisterModal('Registered')" class="px-10 py-5 bg-nkba-red text-white font-bold text-2xl rounded-xl hover:bg-red-700 transition shadow-2xl animate__animated animate__rubberBand animate__delay-2s flex items-center gap-3">
+                        <button onclick="openRegisterModal('Registered')" class="px-8 py-4 md:px-10 md:py-5 bg-nkba-red text-white font-bold text-xl md:text-2xl rounded-xl hover:bg-red-700 transition shadow-2xl animate__animated animate__rubberBand animate__delay-2s flex items-center gap-3">
                             <i class="ph ph-pencil-simple-line"></i> ĐĂNG KÝ NGAY
                         </button>
-                        <p class="text-sm text-slate-500 mt-4 italic">Đăng ký để nhận hồ sơ năng lực & tư vấn</p>
+                        <p class="text-xs md:text-sm text-slate-500 mt-4 italic">Đăng ký để nhận hồ sơ năng lực & tư vấn</p>
                     </div>
                 </div>
             </div>
@@ -313,11 +330,11 @@
     <div id="registerModal" class="fixed inset-0 z-[60] hidden">
         <div class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop" onclick="closeRegisterModal()"></div>
         
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white rounded-2xl shadow-2xl p-8 transition-all scale-95 opacity-0" id="modalContent">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-full max-w-lg bg-white rounded-2xl shadow-2xl p-6 md:p-8 transition-all scale-95 opacity-0" id="modalContent">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="ph ph-x text-2xl"></i></button>
             
             <div class="text-center mb-6">
-                <h3 class="font-heading font-bold text-2xl text-nkba-navy">Đăng Ký Hội Viên</h3>
+                <h3 class="font-heading font-bold text-xl md:text-2xl text-nkba-navy">Đăng Ký Hội Viên</h3>
                 <p class="text-sm text-slate-500 mt-1">Kết nối ngay với mạng lưới NKBA</p>
             </div>
 
@@ -346,7 +363,7 @@
                         <select id="membershipTier" name="entry.1603966729" class="w-full px-4 py-2 border border-slate-200 rounded focus:border-nkba-navy outline-none bg-slate-50">
                             <option value="Registered (Miễn phí)">Registered (Miễn phí)</option>
                             <option value="Official Member (2.4tr/năm)">Official Member (2.4tr/năm)</option>
-                            <option value="Strategic Partner (10tr/năm)">Strategic Partner (10tr/năm)</option>
+                            <option value="Strategic Partner(10tr/năm)">Strategic Partner (10tr/năm)</option>
                             <option value="Cần tư vấn thêm">Cần tư vấn thêm</option>
                         </select>
                     </div>
@@ -397,7 +414,7 @@
                 // Khớp lại các giá trị mới
                 if (tier === 'Registered') mappedTier = 'Registered (Miễn phí)';
                 if (tier === 'Official') mappedTier = 'Official Member (2.4tr/năm)';
-                if (tier === 'Strategic') mappedTier = 'Strategic Partner (10tr/năm)';
+                if (tier === 'Strategic') mappedTier = 'Strategic Partner(10tr/năm)';
                 if (tier === 'Consultation') mappedTier = 'Cần tư vấn thêm';
                 
                 select.value = mappedTier;
