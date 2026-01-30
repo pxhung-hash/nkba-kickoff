@@ -98,7 +98,7 @@
 </head>
 <body>
 
-    <!-- Navigation Dots -->
+    <!-- Navigation Dots (Updated to 8 slides) -->
     <div class="nav-dots">
         <div class="dot active" onclick="scrollToSlide(0)"></div>
         <div class="dot" onclick="scrollToSlide(1)"></div>
@@ -107,6 +107,7 @@
         <div class="dot" onclick="scrollToSlide(4)"></div>
         <div class="dot" onclick="scrollToSlide(5)"></div>
         <div class="dot" onclick="scrollToSlide(6)"></div>
+        <div class="dot" onclick="scrollToSlide(7)"></div>
     </div>
 
     <div class="slides-container" id="scroller">
@@ -300,7 +301,52 @@
             </div>
         </section>
 
-        <!-- SLIDE 7: CTA (UPDATED WITH REGISTER BUTTON) -->
+        <!-- SLIDE 7: BENEFITS (NEW - "WIIFM") -->
+        <section class="bg-slate-50 text-nkba-navy">
+            <div class="container mx-auto px-4 md:px-12">
+                <h2 class="font-heading font-black text-3xl md:text-5xl mb-12 text-center animate__animated animate__fadeInDown">BẠN NHẬN ĐƯỢC GÌ?</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Benefit 1 -->
+                    <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-md border-l-4 border-nkba-gold hover:translate-y-[-5px] transition-transform duration-300 animate__animated animate__fadeInUp">
+                        <div class="text-4xl text-nkba-gold"><i class="ph ph-money"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Cơ Hội Kinh Doanh</h3>
+                            <p class="text-slate-600">Tiếp cận các gói thầu kín và cơ hội cung ứng vật tư trực tiếp từ các Tổng thầu Nhật Bản mà không qua trung gian.</p>
+                        </div>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-md border-l-4 border-nkba-navy hover:translate-y-[-5px] transition-transform duration-300 animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="text-4xl text-nkba-navy"><i class="ph ph-users-three"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Mở Rộng Quan Hệ</h3>
+                            <p class="text-slate-600">Kết nối 1-1 với mạng lưới lãnh đạo, chuyên gia và đối tác uy tín trong hệ sinh thái xây dựng Việt - Nhật.</p>
+                        </div>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-md border-l-4 border-nkba-red hover:translate-y-[-5px] transition-transform duration-300 animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="text-4xl text-nkba-red"><i class="ph ph-chart-line-up"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Nâng Tầm Thương Hiệu</h3>
+                            <p class="text-slate-600">Khẳng định năng lực thông qua việc tham gia vào một liên minh chuyên nghiệp, đạt chuẩn mực khắt khe.</p>
+                        </div>
+                    </div>
+
+                    <!-- Benefit 4 -->
+                    <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-md border-l-4 border-slate-500 hover:translate-y-[-5px] transition-transform duration-300 animate__animated animate__fadeInUp animate__delay-3s">
+                        <div class="text-4xl text-slate-500"><i class="ph ph-shield-check"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Giảm Thiểu Rủi Ro</h3>
+                            <p class="text-slate-600">Được bảo vệ bởi hành lang pháp lý, thông tin thị trường minh bạch và sự hỗ trợ từ cộng đồng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: CTA (UPDATED WITH REGISTER BUTTON) -->
         <section class="bg-white text-center relative">
             <div class="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-10">
